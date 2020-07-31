@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!-- Cofiguring the Date class -->
+
+<bean id="sysdate" class="java.util.Date"/>
+<bean id="dob" class="java.util.Date">
+<property name="year" value="90"/>
+<property name="month" value="10"/>
+<property name="date" value="16" />
+</bean>
+
+<!-- Cofiguring MarkInfo(Array) -->
+<bean id="mi" class="com.nt.beans.MarksInfo">
+<property name="mark">
+<array>
+<value>10</value>
+<value>20</value>
+<value>30</value>
+</array>
+</property>
+        <property name="dates">
+          <array>
+          <ref bean="sysdate"/>
+          <ref bean="dob"/>
+          </array>
+        </property>
+</bean>
+
+<!--Cofiguring CollegeInfo(List)  -->
+<bean id="ci" class="com.nt.beans.Collegeinfo">
+    <property name="name">
+    <list value-type="java.lang.String">
+    <value>Chiku</value>
+    <value>Saurav</value> 
+    </list>
+    </property>
+<property name="datelist">
+           <list value-type="java.util.Date">
+              <ref bean="sysdate"/>
+              <ref bean="dob"/>
+           </list>
+     </property>
+</bean>
+
+<!--Cofiguring ContactInfo(Set)  -->
+<bean id="contact" class="com.nt.beans.ContactInfo">
+<property name="phno">
+<set value-type="java.lang.Long">
+<value>555555</value>
+<value>65656</value>
+</set>
+</property>
+<property name="sdate">
+<set value-type="java.util.Date">
+<ref bean="sysdate"/>
+<ref bean ="dob"/>
+</set>
+</property>
+</bean>
+<!--Cofiguring UnivercityInfo(Map)  -->
+<bean id="uinfo" class="com.nt.beans.UnivercityInfo">
+<property name="facultydetails">
+<map key-type="java.lang.Integer" value-type="java.lang.String">
+<entry>
+<key><value>1</value></key>
+<value>Hari</value>
+</entry>
+<entry key="2" value="Kishore"/>
+<entry key="3" value="Natraj"/>
+</map>
+</property>
+<property name="joinDate">
+<map key-type="java.lang.String" value-type="java.util.Date">
+<entry>
+<key><value>Today</value></key>
+<ref bean="sysdate"/>
+</entry>
+<entry>
+<key><value>DateOfBirth</value></key>
+<ref bean ="dob"/>
+</entry>
+</map>
+</property>
+</bean>
+</beans>
