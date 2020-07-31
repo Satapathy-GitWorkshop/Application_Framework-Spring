@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- Configure DataSource -->
+<bean id="drds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+<property name="username" value="system"/>
+<property name="password" value="9658"/>
+</bean>
+
+<!-- configure StudentDAO -->
+<bean id="studentdao" class="com.nt.DAO.StudentDAO_Impl">
+<constructor-arg ref="drds"/>
+</bean>
+
+ <!-- Configure Service Class -->
+    <bean id="service" class="com.nt.Service.StudentService_Impl">
+      <constructor-arg ref="studentdao"/>
+    </bean>
+    
+  <!-- Configure Controller class -->
+  <bean id="controller" class="com.nt.Controller.StudentController" >
+    <constructor-arg ref="service"/>
+  </bean> 
+</beans>
