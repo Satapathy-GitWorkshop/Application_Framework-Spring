@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<bean id="bike1" class="com.nt.beans.BikeDetails">
+<property name="company" value="Bajaj"></property>
+<property name="modelname" value ="Bajaj Discover"></property>
+<property name="color" value="Black"></property>
+<property name="no" value ="OD0123K"></property>
+<property name="capacity" value="125"></property>
+<property name="milese" value="60"></property>
+</bean>
+
+<!-- Working BeanInheritance Feature -->
+ 
+ <bean id ="bike2" class="com.nt.beans.BikeDetails" parent="bike1">
+ <!-- Addition values -->
+ <property name="modelname" value ="Pulsur220"></property>
+<property name="color" value="Black"></property>
+<property name="no" value ="OD0256K"></property>
+<property name="capacity" value="220"></property>
+<property name="milese" value="45"></property>
+</bean>
+
+<!-- Woking Inheritance with abstarct Keyword -->
+
+<bean id="base" class="com.nt.beans.BikeDetails" abstract="true">
+<property name="company" value="Bajaj"></property>
+<property name="modelname" value ="Bajaj Discover"></property>
+<property name="color" value="Black"></property>
+<property name="no" value ="OD0123K"></property>
+<property name="capacity" value="125"></property>
+<property name="milese" value="60"></property>
+</bean>
+
+<bean id="bike3" class="com.nt.beans.BikeDetails" parent="base">
+<property name="modelname" value ="Bajaj Avenger"></property>
+<property name="color" value="Black Red"></property>
+<property name="no" value ="WB12245"></property>
+<property name="capacity" value="180"></property>
+<property name="milese" value="55"></property>
+</bean>
+
+<!-- BeanInheritance with Constructor Injection -->
+<bean id="basecar" class="com.nt.beans.CarDetails" abstract="true">
+<constructor-arg  name="company" value="MarutiSuzuki"/>
+<constructor-arg  name="modelname" value="SwiftDezire"/>
+<constructor-arg  name="color" value="White"/>
+<constructor-arg  name="no" value="OD01564L"/>
+<constructor-arg  name="capacity" value="800"/>
+<constructor-arg  name="milese" value="18"/>
+</bean>
+<bean id="latest" class="com.nt.beans.CarDetails" parent="basecar">
+<constructor-arg  name="modelname" value="SwiftDezire"/>
+<constructor-arg  name="color" value="White"/>
+</bean>
+</beans>
+
+
