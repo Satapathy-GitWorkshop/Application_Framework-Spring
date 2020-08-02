@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- Configuring ParentBean -->
+
+<bean id="Nareshit" class ="com.nt.bean.JavaPackage" abstract="true">
+<property name="course">
+<set value-type="java.lang.String">
+<value>CoreJava</value>
+<value>JDBC</value>
+<value>Servlet</value>
+<value>JSP</value>
+</set>
+</property>
+</bean>
+
+<!-- Configuring ChildBean -->
+
+<bean id="Student" class="com.nt.bean.JavaPackage"  parent="Nareshit">
+<property name="course">
+<set merge="true">
+ <value>Spring</value>
+ <value>Hibernate</value>
+</set>
+</property>
+</bean>
+
+</beans>
