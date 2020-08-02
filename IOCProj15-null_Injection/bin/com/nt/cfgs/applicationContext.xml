@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<bean id="dob" class ="java.util.Date"/>
+
+<bean id="details" class="com.nt.beans.AdharDetails">
+
+<!-- Normal Injection -->
+<!--  
+<constructor-arg name="name" value="sauarav"/>
+<constructor-arg name="adds" value="Odisha"/>
+<constructor-arg name="adharno" value="222222"/>
+<constructor-arg name="dob" ref="dob"/>
+-->
+<!--  Null Injection (Possible only on ObjectType)-->
+<constructor-arg><null/></constructor-arg>
+<constructor-arg><null/></constructor-arg>
+<constructor-arg  value="225265"/>
+<constructor-arg ><null/></constructor-arg>
+</bean>
+
+
+
+<!-- Working with SetterInjection -->
+<bean id="resturant" class="com.nt.beans.ResturantDetails">
+<property name="rname" value="GreenBabarche"></property>
+<property name="ownername" value="Lokesh khana"></property>
+<property name="loaction" value="FM_Square"></property>
+<property name="timing"><null/></property>
+</bean>
+</beans>
