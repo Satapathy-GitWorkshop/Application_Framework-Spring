@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- Configuring as Normal Bean 
+<bean id ="jobApp" class="com.nt.bean.JobApplication"/>
+<bean id="result" class="com.nt.bean.JobApplicationResult">
+<constructor-arg ref="jobApp"/>
+</bean>
+-->
+
+<!-- Configuring as inner Bean  -->
+<bean id="result" class="com.nt.bean.JobApplicationResult">
+<constructor-arg>
+<bean id="jobapp" class="com.nt.bean.JobApplication"/>
+</constructor-arg>
+</bean>
+
+</beans>
