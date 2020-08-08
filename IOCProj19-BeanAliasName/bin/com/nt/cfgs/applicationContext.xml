@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+
+ 
+<!-- Configuring Dependnt class -->
+    <bean id="pen" class ="com.nt.beans.Pen_Dependent" name="staranger"/>
+<!-- Configuring Target Class -->
+<bean id="paper" class="com.nt.beans.Paper_Target">
+<constructor-arg ref="staranger"/>
+</bean> 
+
+
+<!-- Working with alias Convcept --> 
+
+    <bean id="pen1" class ="com.nt.beans.Pen_Dependent" name="chiku" />
+    <alias name="pen1" alias="elkos"/>
+    <alias name="chiku" alias="saurav"/>
+    
+    
+<bean id="paper1" class="com.nt.beans.Paper_Target">
+<constructor-arg ref="saurav"/>
+</bean>    
+
+
+ 
+ </beans>
+
+
+
