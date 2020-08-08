@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- Normal Injection -->
+
+<!-- Dependent bean -->
+<bean id="plant1" class="com.nt.beans.OutdoorPlant" primary="true"/>
+<bean id="plant2" class="com.nt.beans.IndoorPlant"/>
+<!-- Target bean -->
+<bean id="nursery" class="com.nt.beans.Nursery_Normal">
+<constructor-arg ref="plant1"/>
+</bean>
+
+<!-- AutoWiring byName -->
+
+<!-- Dependent bean -->
+<bean id="outdoor" class="com.nt.beans.OutdoorPlant"/>
+<bean id="indoor" class="com.nt.beans.IndoorPlant"/>
+<!-- Target bean -->
+<bean id="green" class="com.nt.beans.Nursery_byName" autowire="byName"/>
+<!--  <constructor-arg ref="outdoor"/> -->
+
+
+<!-- AutoWiring byType -->
+<!-- Dependent bean -->
+<bean id="outdoor1" class="com.nt.beans.OutdoorPlant"/>
+<bean id="indoor2" class="com.nt.beans.IndoorPlant"/>
+<!-- Target bean -->
+<bean id="green1" class="com.nt.beans.Nursery_byType" autowire="byType"/>
+<!--  <constructor-arg ref="outdoor"/> -->
+
+
+
+<!-- AutoWiring byType -->
+<!-- Dependent bean -->
+<bean id="out" class="com.nt.beans.OutdoorPlant"/>
+<bean id="in" class="com.nt.beans.IndoorPlant"/>
+<!-- Target bean -->
+<bean id="yy" class="com.nt.beans.Nursery_Constructor" autowire="constructor"/>
+<!--  <constructor-arg ref="outdoor"/> -->
+</beans>
