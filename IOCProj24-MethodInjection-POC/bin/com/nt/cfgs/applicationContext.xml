@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- static factory method bean instanciation giving own class Object -->
+<bean id="c1" class="java.lang.Class" factory-method="forName">
+<constructor-arg value="java.util.Date"/>
+</bean>
+<!-- static factory method bean instanciation giving releted class Object -->
+<bean id="c2" class="java.util.Calendar" factory-method="getInstance"/>
+   
+        <!-- Static factory method bean instanation giving unrelated class object -->
+        <bean id="c3"  class="java.sql.DriverManager"  factory-method="getConnection">
+             <constructor-arg value="jdbc:oracle:thin:@localhost:1521:xe"/>
+             <constructor-arg value="system"/>
+             <constructor-arg value="manager"/>  <!--  here <c-a> tags are supplying arg values getConnection(-,-,-) -->
+        </bean>
+         <!-- Instance factotry method bean instantiation giving same class object -->
+         <bean id="c4" class="java.lang.String">
+         <constructor-arg value="hello"/>
+         </bean>
+         <bean id="c5" factory-bean="c4" factory-method="concat">
+         <constructor-arg value="how r you??"/>
+         </bean>
+         
+            
+        <!-- Instance factotry method bean instantiation giving unrelated class object -->
+        <bean id="c6"  class="java.lang.StringBuffer" >
+            <constructor-arg value="hello how are u?"/>  <!-- for construcotr injection -->
+        </bean>
+        <bean id="c7"  factory-bean="c6"  factory-method="substring">
+             <constructor-arg value="0"/> 
+             <constructor-arg value="5"/>
+        </bean>
+</beans>
