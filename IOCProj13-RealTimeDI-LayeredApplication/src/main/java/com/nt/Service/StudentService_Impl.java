@@ -32,7 +32,7 @@ public final class StudentService_Impl implements StudentService {
 	bo.setTotalMark(total);
 	bo.setAvgMark(avg);
 	bo.setResult(result);
-//calling DAO class method
+//calling DAO class method having bo object
 	count =dao.insert(bo);
 	if(count==0)
 		return "Registratation Faild"+result;

@@ -40,7 +40,7 @@ public class ClientApplication {
 	reader= new XmlBeanDefinitionReader(factory);
 	reader.loadBeanDefinitions("com/nt/cfgs/applicationContext.xml");
 	controller=factory.getBean("controller",StudentController.class);
-	//Invoke Business Method
+	//Invoke Business Method of class controller having vo object
 	try {
 		String result=controller.getResult(vo);
 		System.out.println(result);
