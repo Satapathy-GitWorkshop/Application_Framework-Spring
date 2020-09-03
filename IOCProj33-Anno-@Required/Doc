@@ -1,0 +1,9 @@
+                                @Required
+                              ---------------
+>It removed from Spring(5.x)...
+>It work only on method level..
+>It given for setter type property for mandatory injection,that mean if we write @Required at top of
+ setter method then that method type property value must be injected otherwise..it throw error..
+ >If class have 4 setter method and we configured @Required for only two method then that configured 2 method 
+  is mandatory for injection and other 2 method is not mandatory...
+ >While working with annotation we can"t work lambok api... 
