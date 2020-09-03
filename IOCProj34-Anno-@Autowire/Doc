@@ -1,0 +1,24 @@
+                                     @AutoWired
+                               --------------------
+ >Marks a constructor, field, setter method,or config method as to be autowired 
+  bySpring's dependency injection facilities.     
+ >It  by default perfrom "byType" mode of injcetion.
+ > @AutoWired(required=true) is deafault is that mean if no bean found of maintype then it throws error
+ 
+ TO Slove Ambiguity Problem
+ ---------------------------
+ 1>@Qualifier("nikamal")= by giving Specified bean id name...
+ 
+ 2>         @Qualifier(value = "ank")==by giving Specified Qualifier Name
+      <bean id="ankur" class= "com.nt.beans.Ankur">
+      <qualifier value="ank"></qualifier>
+     </bean>
+  
+3>   <bean id="ankur" class= "com.nt.beans.Ankur" primary="true"/>    
+4>   <bean id="ankur" class= "com.nt.beans.Ankur" autowire-candidate="false">                         
+
+NOTE
+----
+   >>>>@AutoWired==It Perform byType mode of Injection
+   >>>>@Qualifier("nikamal")/@Qualifier("nikamal")==Perform Byname Type of Injection
+   >>>>No need of Work with Constructor and Setter method,while working with @Autowired..
