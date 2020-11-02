@@ -6,10 +6,11 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 <!-- Working with C and P nameSpace-->
-
 <bean id="dt"  class="java.util.Date" p:year="90" p:month="6" p:date="12"/>
+
 <!-- Dependent Bean -->
 <bean id="cook" class="com.nt.beans.Chef" c:name="saurav" c:jdate-ref="dt"/>
+
 <!-- Target Bean -->
 <bean id="res" class="com.nt.beans.Resturant" p:name="GanguramSweets" p:owner="Rakesh" p:location="Odisha " p:odate-ref="dt" p:chef-ref="cook"/>
 <!-- Space is mandatory in between nameSpace attributes -->

@@ -16,5 +16,5 @@
 <!-- Configuring taragetClass -->
 <bean id="shop" class="com.nt.beans.HardWare_Store" >
 </bean>
-<context:annotation-config/>
+<context:component-scan base-package="com.nt.beans"/>
 </beans>

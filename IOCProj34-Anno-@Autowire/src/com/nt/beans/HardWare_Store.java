@@ -2,9 +2,11 @@ package com.nt.beans;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Scope;
+
 
 public class HardWare_Store {
-@Autowired(required = true)
+@Autowired
 //@Qualifier("nikamal")//With bean Id
 //@Qualifier(value = "ank")//With qualifier tag given Value
  private Plastic_Factory factory=null;

@@ -23,8 +23,6 @@ public class TemplatesDirectMethodTest {
 		   System.out.println("EmployeeCount::"+service.fetchEmployeeCount());
 		   System.out.println("Employee by Empno::"+service.fetchEmployeebyNo(7499));
 		   System.out.println("Employee by Desg::"+service.fetchEmployeebyDesg("MANAGER"));
-		   System.out.println("No_of InsertEmployee::"+service.insertEmployee(101,"Saurav","Developer",12521.3f));
-		   System.out.println("No_of EmployeeDeleted::"+service.deleteEmployee(101));
 	   }
 	   catch (DataAccessException dae) {
 		dae.printStackTrace();
