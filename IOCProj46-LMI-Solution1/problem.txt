@@ -1,0 +1,7 @@
+PROBLEM WITH TRADITIONAL LOOKUP METHOD CODE
+-------------------------------------------
+->Need extra IOC container.
+->Preinstance of single-ton scope bean.
+->if target is singleton ,though dependent is prototype it has to cahnge the scope to singleton internally 
+  to support injection process.
+ 
