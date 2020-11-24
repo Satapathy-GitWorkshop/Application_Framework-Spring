@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+<!-- cfg sevice class as Spring bean -->
+    <bean id="examhall" class="com.nt.service.ExamHall"/>
+ <!-- cfg aspect class as Spring bean class -->
+    <bean id="log" class="com.nt.advice.ExamLogging"/>
+  <!-- Enable AOP -->
+   <aop:config>
+   <!-- Define the pointcut expression -->
+     <!-- <aop:pointcut expression="execution(String com.nt.service.ExamHall.givingExam(..))" id="ptc"/> --> 
+        <aop:pointcut expression="execution(String com.nt.service.ExamHall.givingExam(..)) and args(paper,name,guide)" id="ptc"/>
+    <!-- cfg spring bean class aspect class -->
+      <aop:aspect  ref="log" >
+      <!-- Applying beforeAdvice -->
+          <aop:before method="checkingId" pointcut-ref="ptc"/>
+    </aop:aspect>  
+   </aop:config>     
+</beans>
