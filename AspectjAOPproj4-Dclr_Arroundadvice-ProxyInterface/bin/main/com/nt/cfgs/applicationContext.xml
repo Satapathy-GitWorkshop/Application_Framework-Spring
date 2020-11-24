@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+<!-- Cfg target/service class as spring bean class -->
+    <bean id="bankservice" class="com.nt.service.BankServiceimpl"/>
+<!--cfg aspect/advice class as soring bean   -->
+    <bean id="pmonitor"  class="com.nt.aspect.PerfermanceMonitorAdvice"/>
+<!-- Enable aspectjAOP  -->     
+    <aop:config>
+   <!-- Definining pointcut expression -->     
+     <aop:pointcut expression="execution(float com.nt.service.IBankService.calculateSimpleInterest(..))" id="ptc"/>
+   <!-- cfg spring bean class as aspectjAop classs -->
+     <aop:aspect ref="pmonitor">
+    <!-- Appling arround advice on proxy Interface -->    
+      <aop:around method="monitor" pointcut-ref="ptc"/> 
+     </aop:aspect> 
+     </aop:config>
+</beans>
