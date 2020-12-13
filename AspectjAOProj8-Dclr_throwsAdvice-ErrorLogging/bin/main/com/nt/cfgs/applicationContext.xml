@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+<!--cfg service class as Spring bean-->
+  <bean id="service" class="com.nt.service.ShoppingStoreimpl"/>
+ <!-- cfg aspect class as Spring bean -->
+  <bean id="exlogger" class="com.nt.aspect.ExceptionLogger"/>
+  
+ <!-- Activating Aop progarmming -->
+ <aop:config>
+    <aop:pointcut expression="execution(float com.nt.service.ShoppingStoreimpl.calculatebills(..))" id="ptc"/>
+    <aop:aspect ref="exlogger">
+    <aop:after-throwing method="exceptionLogging" throwing="ex" pointcut-ref="ptc"/>
+    </aop:aspect>
+    </aop:config> 
+
+</beans>
