@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+<!-- Cfg jdbc based transanction manger -->
+<bean id="txmgmr" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+<constructor-arg ref="hkds"/>
+</bean>
+
+<!--Enable Annotation Based TxMGmt Service  -->
+<tx:annotation-driven transaction-manager="txmgmr"/>
+<aop:config proxy-target-class="true">
+</aop:config>   <!-- It's for making  generating Proxy Based Service class in Runtime -->
+                 <!-- Bcz in my project somw how sevice is using the Proxy supplided Overrideen ServiceClass -->
+</beans>
