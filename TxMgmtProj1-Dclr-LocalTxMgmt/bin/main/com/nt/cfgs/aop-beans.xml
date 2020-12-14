@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+<!-- Cfg jdbc based transanction manger -->
+<bean id="txmgmr" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+<constructor-arg ref="hkds"/>
+</bean>
+
+<!-- Make traction manager as Transaction servce -->
+<tx:advice id="txadvice" transaction-manager="txmgmr">
+<!-- apply Tx Attributes on the b.method -->
+<tx:attributes>
+<!-- specifies how how Tx service should applied on given transferMoney method -->
+<tx:method name="transferMoney" read-only="false" timeout="10" propagation="REQUIRED"/>
+</tx:attributes>
+</tx:advice>
+
+<!-- Apply TxMgmr throw aop  -->
+<aop:config proxy-target-class="true">
+<aop:pointcut expression="execution(boolean com.nt.service.BankServiceMgmtimpl.transferMoney(..))" id="ptc"/>
+<!-- making tx service as AspectjAOP advice -->
+<aop:advisor pointcut-ref="ptc" advice-ref="txadvice"/>
+</aop:config>
+</beans>
